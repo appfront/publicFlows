@@ -1,0 +1,14 @@
+---
+deploy: kafka
+type: service
+memory: 512MB
+tasks:
+- task: broker
+  image: ches/kafka
+  vars:
+    - KAFKA_ADVERTISED_HOST_NAME=46.101.183.241
+    - ZOOKEEPER_IP=172.17.0.1
+    - KAFKA_ADVERTISED_PORT=9092
+    - KAFKA_BROKER_ID=100
+  ports:
+    - 9092:0:tcp
