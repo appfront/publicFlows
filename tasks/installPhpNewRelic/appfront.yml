@@ -1,0 +1,11 @@
+#required volume: /etc/php5/fpm
+#required params:
+  #"newrelic.license ="
+  #"newrelic.appname = "
+#cp /opt/newrelic.ini /etc/php5/fpm/conf.d/
+- task: configure_newrelic
+  image: appfront/newrelic
+  command: configure
+  vars:
+  - appname=appfrontTestApp
+  - license=6a67e3d94819aa2436af8b71f24b30545e67ca31
