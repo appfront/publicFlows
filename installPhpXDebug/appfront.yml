@@ -1,0 +1,11 @@
+#required volume: /var/www
+#required params:
+  #"newrelic.license ="
+  #"newrelic.appname = "
+- task: configure_xdebug
+  image: appfront/setphp:xdebug
+  command: configure
+  vars:
+  - idekey=PHPSTORM
+  - remoteport=9009
+  - path=/var/www/web #optional
