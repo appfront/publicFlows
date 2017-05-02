@@ -1,9 +1,0 @@
----
-deploy: zookeeper
-type: service
-memory: 256MB
-tasks:
-- task: server
-  image: appfront/zookeeper
-  ports:
-    - 2181:2181:tcp
