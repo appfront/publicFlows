@@ -1,7 +1,7 @@
 #required volume: /var/www
 #required params:
-  #"newrelic.license ="
-  #"newrelic.appname = "
+  #"xdebug.idekey ="
+  #"xdebug.remoteport = "
 - task: configure_xdebug
   image: appfront/setphp:xdebug
   command: configure

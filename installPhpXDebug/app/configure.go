@@ -43,9 +43,9 @@ func main() {
 		}
 
 		if envs["path"] != "" {
-			cmd = "cp /opt/newrelic.ini " + envs["path"] + "/.user.ini"
+			cmd = "cp /opt/xdebug.ini " + envs["path"] + "/.user.ini"
 		} else {
-			cmd = "cp /opt/newrelic.ini /var/www/web/.user.ini"
+			cmd = "cp /opt/xdebug.ini /var/www/web/.user.ini"
 		}
 
 		if !goExec(cmd) {
