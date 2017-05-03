@@ -1,0 +1,24 @@
+#!/usr/bin/ruby
+
+
+
+exit 1 unless ARGV[0] and ARGV[1]
+exit 1 unless ENV['aws_secret_key'] and ENV['aws_access_key'] and ENV['bucket']
+source = ARGV[0]
+slug = ARGV[1]
+
+bucket = ENV['bucket']
+
+#creating slug
+time  = Time.now.to_i
+f = "#{slug}-latest.tgz"
+old = "#{slug}-#{time}.tgz"
+system("tar cvfz #{f} #{source}")
+
+#configuring uploader
+`echo access_key = #{ENV['aws_access_key']} >> /root/.s3cfg`
+`echo secret_key = #{ENV['aws_secret_key']} >> /root/.s3cfg`
+
+#uploading slug
+system("s3cmd -c /root/.s3cfg --rr mv s3://#{bucket}/#{f} s3://#{bucket}/#{old}") rescue true
+system("s3cmd -c /root/.s3cfg --rr put #{f} s3://#{bucket}/#{f}")
